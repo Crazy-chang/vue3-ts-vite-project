@@ -1,0 +1,23 @@
+@font-face {
+  font-family: "iconfont"; /* Project id 2981821 */
+  src: url("//at.alicdn.com/t/font_2981821_3kjrlawjw2i.woff2?t=1638414419648")
+      format("woff2"),
+    url("//at.alicdn.com/t/font_2981821_3kjrlawjw2i.woff?t=1638414419648")
+      format("woff"),
+    url("//at.alicdn.com/t/font_2981821_3kjrlawjw2i.ttf?t=1638414419648")
+      format("truetype"),
+    url("//at.alicdn.com/t/font_2981821_3kjrlawjw2i.svg?t=1638414419648#iconfont")
+      format("svg");
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.cebianlan:before {
+    content: "\e609";
+}

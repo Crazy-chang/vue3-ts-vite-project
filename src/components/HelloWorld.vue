@@ -1,4 +1,5 @@
 <template>
+  <h1>{{name}}</h1>
   <div class="hello">
     <h1>{{ msg }}</h1>
     <p>
@@ -34,13 +35,19 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, inject } from 'vue';
 
 export default defineComponent({
   name: 'HelloWorld',
   props: {
     msg: String,
   },
+  setup(){
+    const name = inject('name')
+    return {
+      name
+    }
+  }
 });
 </script>
 
