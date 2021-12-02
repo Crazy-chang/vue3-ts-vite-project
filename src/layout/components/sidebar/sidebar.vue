@@ -39,7 +39,7 @@ export default defineComponent({
   setup() {
     const store = useStore();
     const router = useRouter();
-    // 需要使用 computed来获取vuex里的数据
+    
     const isCollapse = computed(() => {
       return store.state.layoutdata.isCollapse;
     });
@@ -88,6 +88,7 @@ export default defineComponent({
 </script>
 <style land="scss" scoped>
 .el-menu-vertical-demo {
-  background-color: rgb(243, 251, 253);
+  background-color: $injectedColor;
+  /* background-color: rgb(243, 251, 253); */
 }
 </style>

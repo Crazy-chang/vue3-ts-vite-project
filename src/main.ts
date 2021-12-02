@@ -6,7 +6,6 @@ import permission from "./utils/permission";
 import ElementPlus from "element-plus";
 import "element-plus/dist/index.css";
 import "@/static/css/iconfont.css";
-import "@/static/css/index.scss";
 
 createApp(App)
   .use(store)
