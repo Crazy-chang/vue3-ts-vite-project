@@ -1,7 +1,13 @@
 <template>
   <div class="nav-header">
-    <div @click="changeIsCollapse" class="iconfont cebianlan"></div>
-    <div @click="logOut">退出登录</div>
+    <img class="logo" src="../../../static/img/logo.png" alt="" />
+    <div class="nav-box">
+      <div @click="changeIsCollapse" class="iconfont cebianlan"></div>
+      <div class="nav-but">
+        <div>Crazy</div>
+        <div @click="logOut">退出登录</div>
+      </div>
+    </div>
   </div>
 </template>
 <script setup>
@@ -25,7 +31,7 @@ const logOut = () => {
   ElMessage({
     message: "退出成功",
     type: "success",
-    duration:600,
+    duration: 600,
   });
   router.push({ name: "Login" });
 };
@@ -36,8 +42,21 @@ const logOut = () => {
   height: 60px;
   line-height: 60px;
   display: flex;
-  box-sizing: border-box;
-  padding-left: 200px;
-  justify-content: space-between;
+  .logo {
+    width: 100px;
+    padding: 0 40px;
+  }
+  .nav-box {
+    width: 100%;
+    display: flex;
+    box-sizing: border-box;
+    align-content: center;
+    justify-content: space-between;
+    .nav-but {
+      min-width: 200px;
+      display: flex;
+      justify-content: space-around;
+    }
+  }
 }
 </style>

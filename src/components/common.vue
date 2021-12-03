@@ -31,7 +31,8 @@
         <!-- <button class="error__button">CONTACT</button> -->
       </div>
     </slot>
-    <div class="astronaut" v-resize="draw3dAstronaut">
+    <div class="astronaut">
+    <!-- <div class="astronaut" v-resize="draw3dAstronaut"> -->
       <canvas ref="cav"></canvas>
     </div>
   </div>
@@ -50,11 +51,9 @@ nextTick(() => {
  * @return {*}
  */
 const draw3dAstronaut = () => {
-    // cav.value.width = 1000;
-    // cav.value.height = 900;
-    console.log('666=',cav)
-    // cav.value.width = cav.value.parentNode.clientWidth;
-    // cav.value.height = cav.value.parentNode.clientHeight;
+    cav.value.width = cav.value.parentNode.clientWidth;
+    cav.value.height = cav.value.parentNode.clientHeight;
+    console.log('canvas=',cav)
 
     // colours
     let dark_navy = "#131e38";
@@ -67,11 +66,7 @@ const draw3dAstronaut = () => {
     // create illo
     let illo = new Zdog.Illustration({
         // set canvas with selector
-        element: {
-            width:1000,
-            height:900
-        },
-        // element: cav.value,
+        element: cav.value,
         dragRotate: true,
         zoom: 0.65,
     });

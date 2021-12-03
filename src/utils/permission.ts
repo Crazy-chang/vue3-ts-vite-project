@@ -5,8 +5,7 @@ import "nprogress/nprogress.css";
 export default {
   // 以插件形式引入
   install: (app: any, router: any) => {
-    const routerList = router.options.routes;
-    // console.log("router=",routerList)
+    const routerList = ['/login','/visitor'];  // 白名单
 
     NProgress.start();
     router.beforeEach((to: any, from: any, next: any) => {
@@ -14,17 +13,16 @@ export default {
       if (localStorage["pwd"]) {
         next();
       } else {
-        // 未登录下重定向到/login，判断是否路径为/login
-        if (to.path === "/login") {
+        // 未登录下重定向处理
+        if (routerList.includes(to.path)) {
           next();
         } else {
-          next({ name: "Login" });
+          next({ name: "Visitor" });
         }
       }
     });
     router.afterEach(() => {
       NProgress.done()
-      console.log("afterEach中");
     });
   },
 };

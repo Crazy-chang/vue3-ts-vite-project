@@ -43,7 +43,4 @@ import appheader from "./components/appheader/appheader.vue";
   background-color: rgb(243, 251, 253);
 }
 
-/* .el-main {
-  padding: 0;
-} */
 </style>

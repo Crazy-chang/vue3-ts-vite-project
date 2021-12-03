@@ -3,31 +3,30 @@
     :default-active="defaultActive"
     class="el-menu-vertical-demo"
     :collapse="isCollapse"
+    router="true"
     @open="handleOpen"
     @close="handleClose"
   >
-    <div v-for="(item, index) in treeList" :key="index">
-      <!-- 第一层 -->
+    <template v-for="(item, index) in treeList" :key="index">
       <el-sub-menu v-if="item.list" :index="index">
         <template #title>
           <i class="el-icon-location"></i>
           <span>{{ item.title }}</span>
         </template>
-        <!-- 第二层 -->
+
         <el-menu-item
           v-for="(it, indexs) in item.list"
           :key="indexs"
-          :index="`${index}-${indexs}`"
-          @click="changeRoute(it.url)"
+          :index="it.url"
           >{{ it.title }}</el-menu-item
         >
       </el-sub-menu>
-      <!-- 第一层无下拉 -->
-      <el-menu-item v-else :index="index" @click="changeRoute(item.url)">
+      <!-- 无子列表 -->
+      <el-menu-item v-else :index="item.url">
         <i class="el-icon-menu"></i>
         <template #title>{{ item.title }}</template>
       </el-menu-item>
-    </div>
+    </template>
   </el-menu>
 </template>
 <script>
@@ -39,7 +38,7 @@ export default defineComponent({
   setup() {
     const store = useStore();
     const router = useRouter();
-    
+
     const isCollapse = computed(() => {
       return store.state.layoutdata.isCollapse;
     });
@@ -50,17 +49,25 @@ export default defineComponent({
         url: "/one",
       },
       {
-        title: "第一级",
+        title: "管理",
         list: [
           {
-            title: "二级",
+            title: "个人设置",
             url: "/about",
           },
         ],
       },
       {
-        title: "第一级",
+        title: "其他",
         url: "/two",
+      },
+      {
+        title: "图表",
+        url: "/editor",
+      },
+      {
+        title: "富文本",
+        url: "/editor",
       },
     ]);
     let defaultActive = ref(null);
@@ -73,7 +80,7 @@ export default defineComponent({
     };
     const changeRoute = (data) => {
       defaultActive = data;
-      router.push(data)
+      router.push(data);
     };
     return {
       isCollapse,
@@ -88,7 +95,11 @@ export default defineComponent({
 </script>
 <style land="scss" scoped>
 .el-menu-vertical-demo {
-  background-color: $injectedColor;
-  /* background-color: rgb(243, 251, 253); */
+  background-color: rgb(243, 251, 253);
+}
+.el-menu-vertical-demo:not(.el-menu--collapse) {
+  width: 200px;
+  height: 100vh;
+  /* min-height: 600px; */
 }
 </style>
