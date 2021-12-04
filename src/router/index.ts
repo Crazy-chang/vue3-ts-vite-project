@@ -11,6 +11,9 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: "one",
         name: "One",
+        meta:{
+          title:'名'
+        },
         component: () => import("@/views/other/one.vue"),
       },
       {
@@ -28,9 +31,18 @@ const routes: Array<RouteRecordRaw> = [
         name: "Editor",
         component: () => import("@/views/editor/editor.vue"),
       },
+      {
+        path: "/pie",
+        name: "Pie",
+        component: () => import("@/views/echarts/pie.vue"),
+      },
+      {
+        path: "/line",
+        name: "Line",
+        component: () => import("@/views/echarts/line.vue"),
+      },
     ],
   },
-
   {
     path: "/login",
     name: "Login",

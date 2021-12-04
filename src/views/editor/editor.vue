@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>富文本在线玩儿</h1>
-    <div ref="edite" id="edite"></div>
+    <div ref="edite"></div>
   </div>
 </template>
 <script setup lang="ts">
@@ -16,7 +16,7 @@ onMounted(() => {
 </script>
 <style lang="scss" scoped>
 h1 {
-    box-sizing: border-box;
-    padding: 20px;
+  box-sizing: border-box;
+  padding: 20px;
 }
 </style>

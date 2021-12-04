@@ -58,12 +58,18 @@ export default defineComponent({
         ],
       },
       {
-        title: "其他",
+        title: "权限",
         url: "/two",
       },
       {
         title: "图表",
-        url: "/editor",
+        url: "/echart",
+        list: [
+          {
+            title: "饼",
+            url: "/pie",
+          },
+        ],
       },
       {
         title: "富文本",

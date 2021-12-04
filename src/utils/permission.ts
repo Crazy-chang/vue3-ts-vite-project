@@ -6,9 +6,9 @@ export default {
   // 以插件形式引入
   install: (app: any, router: any) => {
     const routerList = ['/login','/visitor'];  // 白名单
-
     NProgress.start();
     router.beforeEach((to: any, from: any, next: any) => {
+      console.log('这是',to)
       // 判断是否登录
       if (localStorage["pwd"]) {
         next();

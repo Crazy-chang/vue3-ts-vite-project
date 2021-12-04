@@ -13,8 +13,8 @@
           </el-scrollbar>
         </el-aside>
         <!-- 主内容 -->
-        <el-main class="el-main">
-          <el-scrollbar>
+        <el-main>
+          <el-scrollbar ref="scrollbar" height="800px">
             <router-view v-slot="{ Component }">
               <transition name="fade">
                 <component :is="Component" />
@@ -30,17 +30,19 @@
 <script setup>
 import sidebar from "./components/sidebar/sidebar.vue";
 import appheader from "./components/appheader/appheader.vue";
+import { nextTick, ref } from "vue";
+const scrollbar = ref();
+nextTick(() => {
+  // 更新滚动高度
+  scrollbar.value.update();
+});
 </script>
 
 <style land="scss" scoped>
 .el-header {
   background-color: rgb(225, 242, 248);
 }
-.el-scrollbar {
-  height: 100%;
-}
 .el-aside {
   background-color: rgb(243, 251, 253);
 }
-
 </style>
