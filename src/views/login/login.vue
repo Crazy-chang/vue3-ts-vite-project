@@ -7,7 +7,7 @@
  * @FilePath: \vue3-element-admin\src\views\Login.vue
 -->
 <template>
-  <common>
+  <zdog>
     <div class="ve_container">
       <el-card :body-style="{ background: 'rgba(0,0,0,0.15)' }">
         <h1>开启乱卷模式</h1>
@@ -46,11 +46,11 @@
         </transition>
       </el-card>
     </div>
-  </common>
+  </zdog>
 </template>
 
 <script setup>
-import Common from "@/components/common";
+import zdog from "@/components/zdog";
 import { ref, reactive, toRefs } from "vue";
 import { useStore } from "vuex";
 import { useRouter } from "vue-router";

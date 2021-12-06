@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
+import layout from "@/layout/index.vue"
 // import globalRouter from "./globalRouter";
 
 const routes: Array<RouteRecordRaw> = [
@@ -9,7 +10,7 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import("@/views/Home.vue"),
     children: [
       {
-        path: "one",
+        path: "/one",
         name: "One",
         meta:{
           title:'名'
@@ -27,21 +28,29 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import("@/views/other/About.vue"),
       },
       {
-        path: "/editor",
-        name: "Editor",
-        component: () => import("@/views/editor/editor.vue"),
-      },
-      {
-        path: "/pie",
-        name: "Pie",
-        component: () => import("@/views/echarts/pie.vue"),
-      },
-      {
         path: "/line",
         name: "Line",
         component: () => import("@/views/echarts/line.vue"),
       },
     ],
+  },
+  {
+    path: "/wan",
+    name: "Wan",
+    component: layout,
+    redirect:'/wan/editor',
+    children:[
+      {
+        path: "/wan/editor",
+        name: "Editor",
+        component: () => import("@/views/editor/editor.vue"),
+      },
+      {
+        path: "/wan/pie",
+        name: "Pie",
+        component: () => import("@/views/echarts/pie.vue"),
+      },
+    ]
   },
   {
     path: "/login",

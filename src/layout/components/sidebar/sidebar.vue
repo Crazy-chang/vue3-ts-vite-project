@@ -38,11 +38,10 @@ export default defineComponent({
   setup() {
     const store = useStore();
     const router = useRouter();
-
     const isCollapse = computed(() => {
       return store.state.layoutdata.isCollapse;
     });
-
+    // 在线路由调试
     let treeList = ref([
       {
         title: "首页",
@@ -62,22 +61,23 @@ export default defineComponent({
         url: "/two",
       },
       {
-        title: "图表",
-        url: "/echart",
+        title: "集成",
+        url: "/wan",
         list: [
           {
-            title: "饼",
-            url: "/pie",
+            title: "图表",
+            url: "/wan/pie",
+          },
+          {
+            title: "富文本",
+            url: "/wan/editor",
           },
         ],
       },
-      {
-        title: "富文本",
-        url: "/editor",
-      },
     ]);
     let defaultActive = ref(null);
-
+    console.log("刷新了", router.options.history.location);
+    defaultActive = router.options.history.location;
     const handleOpen = (key, keyPath) => {
       console.log(key, keyPath);
     };

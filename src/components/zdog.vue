@@ -53,7 +53,6 @@ nextTick(() => {
 const draw3dAstronaut = () => {
     cav.value.width = cav.value.parentNode.clientWidth;
     cav.value.height = cav.value.parentNode.clientHeight;
-    console.log('canvas=',cav)
 
     // colours
     let dark_navy = "#131e38";
