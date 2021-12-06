@@ -76,7 +76,7 @@ export default defineComponent({
       },
     ]);
     let defaultActive = ref(null);
-    console.log("刷新了", router.options.history.location);
+    console.log("刷新", router.options.history.location);
     defaultActive = router.options.history.location;
     const handleOpen = (key, keyPath) => {
       console.log(key, keyPath);
