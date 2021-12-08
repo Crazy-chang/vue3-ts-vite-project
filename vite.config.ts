@@ -22,10 +22,10 @@ export default defineConfig({
     sourcemap: false, //是否构建source map 文件
     terserOptions: {
       // 生产环境移除console
-    //   compress: {
-    //     drop_console: true,
-    //     drop_debugger: true,
-    //   },
+      compress: {
+        drop_console: true,
+        drop_debugger: true,
+      },
     },
   }
 });

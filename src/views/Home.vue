@@ -1,24 +1,24 @@
 <template>
-  <div class="home"> 
+  <div class="home">
     <layout></layout>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent, ref } from "vue";
-import layout from '../layout/index.vue'
- 
+import layout from "../layout/index.vue";
+
 // var Mock = require('mockjs');
 export default defineComponent({
   name: "Home",
-  components:{
-    layout
+  components: {
+    layout,
   },
-  setup(){
-    const val = ref('666')
+  setup() {
+    const val = ref("666");
     return {
-      val
-    }
+      val,
+    };
   },
   mounted() {
     // console.log("虚拟",Mock)

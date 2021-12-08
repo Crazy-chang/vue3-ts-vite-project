@@ -14,7 +14,9 @@
 import { useStore } from "vuex";
 import { useRouter } from "vue-router";
 import { ElMessage } from "element-plus";
-
+import request from "@/api/request.js";
+import as from "axios"
+import {artist} from "@/api/api"
 const store = useStore();
 const router = useRouter();
 
@@ -23,10 +25,10 @@ const changeIsCollapse = () => {
   // 触发mutations下的方法，如果是引入的，需要拼接模块名
   store.commit("layoutdata/changeCollapse");
 
-  // console.log("这是获取",store.state.layoutdata.isCollapse);
 };
 
 const logOut = () => {
+  getData()
   localStorage.clear();
   ElMessage({
     message: "退出成功",
@@ -34,6 +36,10 @@ const logOut = () => {
     duration: 600,
   });
   router.push({ name: "Login" });
+};
+const  getData = () => {
+    as.get('http://localhost:3000/song/url?id=33894312&proxy=http://192.168.1.144:8080')
+    // console.log("axios==", artist());
 };
 </script>
 <style lang="scss" scoped>

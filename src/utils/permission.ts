@@ -2,13 +2,14 @@
 
 import NProgress from "nprogress";
 import "nprogress/nprogress.css";
+// import asiox from "@/api/axios"
 export default {
   // 以插件形式引入
   install: (app: any, router: any) => {
+    // console.log("App=",app)
     const routerList = ['/login','/visitor'];  // 白名单
     NProgress.start();
-    router.beforeEach((to: any, from: any, next: any) => {
-      console.log('这是',to)
+    router.beforeEach((to: any, from: any, next: any) => { 
       // 判断是否登录
       if (localStorage["pwd"]) {
         next();

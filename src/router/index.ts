@@ -7,38 +7,47 @@ const routes: Array<RouteRecordRaw> = [
     path: "/",
     name: "Home",
     redirect: { name: "One" },
-    component: () => import("@/views/Home.vue"),
+    component: layout,
     children: [
       {
         path: "/one",
         name: "One",
         meta:{
-          title:'名'
+          title:'首页',
         },
         component: () => import("@/views/other/one.vue"),
       },
+      
+    ],
+  },
+  {
+    path: "/man",
+    name: "Man",
+    component: layout,
+    // redirect:'/wan/editor',
+    children:[
       {
-        path: "two",
+        path: "/man/two",
         name: "Two",
         component: () => import("@/views/other/two.vue"),
       },
       {
-        path: "about",
+        path: "/man/about",
         name: "About",
         component: () => import("@/views/other/About.vue"),
       },
       {
-        path: "/line",
+        path: "/man/line",
         name: "Line",
         component: () => import("@/views/echarts/line.vue"),
       },
-    ],
+    ]
   },
   {
     path: "/wan",
     name: "Wan",
     component: layout,
-    redirect:'/wan/editor',
+    // redirect:'/wan/editor',
     children:[
       {
         path: "/wan/editor",

@@ -38,6 +38,7 @@ export default defineComponent({
   setup() {
     const store = useStore();
     const router = useRouter();
+    
     const isCollapse = computed(() => {
       return store.state.layoutdata.isCollapse;
     });
@@ -52,13 +53,13 @@ export default defineComponent({
         list: [
           {
             title: "个人设置",
-            url: "/about",
+            url: "/man/about",
           },
         ],
       },
       {
         title: "权限",
-        url: "/two",
+        url: "/man/two",
       },
       {
         title: "集成",
@@ -76,7 +77,6 @@ export default defineComponent({
       },
     ]);
     let defaultActive = ref(null);
-    console.log("刷新", router.options.history.location);
     defaultActive = router.options.history.location;
     const handleOpen = (key, keyPath) => {
       console.log(key, keyPath);
@@ -84,13 +84,8 @@ export default defineComponent({
     const handleClose = (key, keyPath) => {
       console.log(key, keyPath);
     };
-    const changeRoute = (data) => {
-      defaultActive = data;
-      router.push(data);
-    };
     return {
       isCollapse,
-      changeRoute,
       handleOpen,
       handleClose,
       treeList,
