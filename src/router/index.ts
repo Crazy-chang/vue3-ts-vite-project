@@ -5,58 +5,54 @@ import layout from "@/layout/index.vue"
 const routes: Array<RouteRecordRaw> = [
   {
     path: "/",
+    name: "index",
+    // redirect: { name: "One" },
+    component: layout,
+  },
+  {
+    path: "/home",
     name: "Home",
     redirect: { name: "One" },
+    meta:{
+      title:'首页',
+    },
     component: layout,
     children: [
       {
         path: "/one",
         name: "One",
         meta:{
-          title:'首页',
+          title:'首页数据',
+          damin:true
         },
         component: () => import("@/views/other/one.vue"),
       },
-      
     ],
-  },
-  {
-    path: "/man",
-    name: "Man",
-    component: layout,
-    // redirect:'/wan/editor',
-    children:[
-      {
-        path: "/man/two",
-        name: "Two",
-        component: () => import("@/views/other/two.vue"),
-      },
-      {
-        path: "/man/about",
-        name: "About",
-        component: () => import("@/views/other/About.vue"),
-      },
-      {
-        path: "/man/line",
-        name: "Line",
-        component: () => import("@/views/echarts/line.vue"),
-      },
-    ]
   },
   {
     path: "/wan",
     name: "Wan",
     component: layout,
-    // redirect:'/wan/editor',
+    meta:{
+      title:'插件',
+    },
+    redirect:'/wan/editor',
     children:[
       {
         path: "/wan/editor",
         name: "Editor",
+        meta:{
+          title:'富文本',
+          ico:''
+        },
         component: () => import("@/views/editor/editor.vue"),
       },
       {
         path: "/wan/pie",
         name: "Pie",
+        meta:{
+          title:'图表',
+        },
         component: () => import("@/views/echarts/pie.vue"),
       },
     ]

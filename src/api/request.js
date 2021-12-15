@@ -1,6 +1,9 @@
 import axios from "axios";
 // axios配置
 // axios.defaults.baseURL = process.env.NODE_ENV;
+// axios.defaults.headers['token'] = token || ''
+// 默认 post 请求，使用 application/json 形式
+axios.defaults.headers.post['Content-Type'] = 'application/json'
 console.log("环境=", process.env.NODE_ENV);
 const instance = axios.create({
   // baseURL: "https://some-domain.com/api/", // 前缀

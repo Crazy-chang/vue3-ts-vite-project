@@ -8,24 +8,27 @@
     @close="handleClose"
   >
     <template v-for="(item, index) in treeList" :key="index">
-      <el-sub-menu v-if="item.list" :index="index">
-        <template #title>
-          <i class="el-icon-location"></i>
-          <span>{{ item.title }}</span>
-        </template>
+      <template v-if="item.meta">
+        <!-- 多层 -->
+        <el-sub-menu v-if="item.children.length>1" :index="index">
+          <template #title>
+            <i class="el-icon-location"></i>
+            <span>{{ item.meta.title }}</span>
+          </template>
 
-        <el-menu-item
-          v-for="(it, indexs) in item.list"
-          :key="indexs"
-          :index="it.url"
-          >{{ it.title }}</el-menu-item
-        >
-      </el-sub-menu>
-      <!-- 无子列表 -->
-      <el-menu-item v-else :index="item.url">
-        <i class="el-icon-menu"></i>
-        <template #title>{{ item.title }}</template>
-      </el-menu-item>
+          <el-menu-item
+            v-for="(it, indexs) in item.children"
+            :key="indexs"
+            :index="it.path"
+            >{{ it.meta.title }}</el-menu-item
+          >
+        </el-sub-menu>
+        <!-- 无子列表 -->
+        <el-menu-item v-else :index="item.children[0].path">
+          <i class="el-icon-menu"></i>
+          <template #title>{{ item.meta.title }}</template>
+        </el-menu-item>
+      </template>
     </template>
   </el-menu>
 </template>
@@ -38,44 +41,17 @@ export default defineComponent({
   setup() {
     const store = useStore();
     const router = useRouter();
-    
+
     const isCollapse = computed(() => {
       return store.state.layoutdata.isCollapse;
     });
-    // 在线路由调试
-    let treeList = ref([
-      {
-        title: "首页",
-        url: "/one",
-      },
-      {
-        title: "管理",
-        list: [
-          {
-            title: "个人设置",
-            url: "/man/about",
-          },
-        ],
-      },
-      {
-        title: "权限",
-        url: "/man/two",
-      },
-      {
-        title: "集成",
-        url: "/wan",
-        list: [
-          {
-            title: "图表",
-            url: "/wan/pie",
-          },
-          {
-            title: "富文本",
-            url: "/wan/editor",
-          },
-        ],
-      },
-    ]);
+
+    const arrs = JSON.parse(JSON.stringify(store.state.layoutdata.ruleRouters));
+    
+    // console.log("路由=", router.options.routes);
+    // 获取动态路由列表
+    let treeList = ref([...router.options.routes,...arrs]);
+    
     let defaultActive = ref(null);
     defaultActive = router.options.history.location;
     const handleOpen = (key, keyPath) => {

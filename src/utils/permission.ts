@@ -1,15 +1,26 @@
 // 路由权限控制
 
+import store from "@/store";
 import NProgress from "nprogress";
 import "nprogress/nprogress.css";
+
 // import asiox from "@/api/axios"
 export default {
   // 以插件形式引入
   install: (app: any, router: any) => {
     // console.log("App=",app)
     const routerList = ['/login','/visitor'];  // 白名单
+    
     NProgress.start();
-    router.beforeEach((to: any, from: any, next: any) => { 
+    router.beforeEach( async (to: any, from: any, next: any) => { 
+
+      // 添加动态路由
+      const routerData = await store.dispatch('layoutdata/setRouter')
+      routerData.forEach((it:any) => {
+        router.addRoute(it)
+      });
+      
+      console.log("router=",router)
       // 判断是否登录
       if (localStorage["pwd"]) {
         next();

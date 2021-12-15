@@ -82,6 +82,10 @@ const onSubmit = () => {
       //         store.dispatch("app/set_token", token);
       //         store.dispatch("app/set_uname", uname);
       //         success.value = true;
+
+      // 登录后处理路由权限
+      store.dispatch('layoutdata/setRouter')
+
       ElMessage({
         message: "登录成功",
         type: "success",
